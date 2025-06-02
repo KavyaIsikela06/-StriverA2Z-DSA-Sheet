@@ -1,0 +1,16 @@
+import java.util.*;
+ public class Main{
+      public static void recursion(int current,int n){
+            if(current==0){
+                return;
+            }
+        System.out.println(current);
+        recursion(current-1,n);
+     }
+public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        //Main r=new Main(); if non static method
+        Main.recursion(n,1);
+    }
+}
