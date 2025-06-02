@@ -14,3 +14,21 @@ public static void main(String[] args) {
         Main.recursion(n,1);
     }
 }
+// Using Backtracking:
+import java.util.*;
+ public class Main{
+      public static void recursion(int current,int n){
+            if(current>n){
+                return;
+            }
+        recursion(current+1,n);
+                System.out.println(current);
+
+     }
+public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        //Main r=new Main(); if non static method
+        Main.recursion(1,n);
+    }
+}
