@@ -1,0 +1,13 @@
+import java.util.*;
+class Main {
+    public static void main(String[] args) {
+        char [] array={'a','b','a'};
+        HashMap<Character,Integer>hm=new HashMap<>();
+        for(int i=0;i<array.length;i++){
+        hm.put(array[i],hm.getOrDefault(array[i],0)+1);
+        }
+        for(char i:hm.keySet()){
+        System.out.println(i+" "+hm.get(i));
+        }
+    }
+}
