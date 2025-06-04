@@ -1,0 +1,18 @@
+class Solution {
+    public int mostFrequentElement(int[] nums) {
+     HashMap<Integer,Integer>hm=new HashMap<>();
+     int maxfreq=0;
+     int result=nums[0];
+     for(int i=0;i<nums.length;i++){
+        hm.put(nums[i],hm.getOrDefault(nums[i],0)+1);
+        int freq=hm.get(nums[i]);
+        if(freq>maxfreq||freq==maxfreq&&nums[i]<result){
+            maxfreq=freq;
+            result=nums[i];
+        }
+     }
+     return result;
+    }
+}
+
+
