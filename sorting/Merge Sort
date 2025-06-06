@@ -1,0 +1,52 @@
+class Solution {
+    public int[] mergeSort(int[] nums) {
+        if(nums==null||nums.length<=1){
+            return nums;
+        }
+        mergesorthelper(nums,0,nums.length-1);
+        return nums;
+    }
+    public void mergesorthelper(int[] nums,int l,int r){
+        if(l<r){
+        int mid=l+(r-l)/2;
+        mergesorthelper(nums,l,mid);
+        mergesorthelper(nums,mid+1,r);
+        merge(nums,l,mid,r);
+        }
+    }
+    public void merge(int[]nums,int l,int mid,int r){
+        int n1=mid-l+1;
+        int n2=r-mid;
+        int[] larr=new int[n1];
+        int[] rarr=new int[n2];
+        for(int i=0;i<n1;i++){
+            larr[i]=nums[l+i];
+        }
+        for(int j=0;j<n2;j++){
+            rarr[j]=nums[mid+1+j];
+        }
+        int i=0,j=0,k=l;
+        while(i<n1&&j<n2){
+            if(larr[i]<rarr[j]){
+                nums[k]=larr[i];
+                i++;
+                k++;
+            }
+            else{                
+                nums[k]=rarr[j];
+                k++;
+                j++;
+            }
+        }
+        while(i<n1){
+            nums[k]=larr[i];
+            k++;
+            i++;
+        }
+        while(j<n2){
+            nums[k]=rarr[j];
+            k++;
+            j++;
+        }
+    }
+}
