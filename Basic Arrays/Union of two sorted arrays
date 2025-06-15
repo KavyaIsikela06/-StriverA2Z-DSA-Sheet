@@ -1,0 +1,51 @@
+class Solution {
+    public int[] unionArray(int[] nums1, int[] nums2) {
+        int n1=nums1.length;
+        int n2=nums2.length;
+        int i=0;
+        int j=0;
+        ArrayList<Integer>res=new ArrayList<>();
+        while(i<n1&&j<n2){
+            if(i>0&&nums1[i]==nums1[i-1]){
+                i++;
+                continue;
+            }
+            if(j>0&&nums2[j]==nums2[j-1]){
+                j++;
+                continue;
+            }
+            if(nums1[i]<nums2[j]){
+                res.add(nums1[i]);
+                i++;
+            }
+            else if(nums1[i]>nums2[j]){ 
+                res.add(nums2[j]);
+                j++;
+            }
+            else{
+                res.add(nums1[i]);
+                i++;
+                j++;
+            }
+        }
+        while(i<n1){
+            if(i==0||nums1[i-1]!=nums1[i]){
+                res.add(nums1[i]);
+            }
+            i++;
+        }
+        while(j<n2){
+            if(j==0||nums2[j-1]!=nums2[j]){
+                res.add(nums2[j]);
+            }
+            j++;
+        }
+        int[] union=new int[res.size()];
+        int index=0;
+        for(int result:res){
+            union[index]=result;
+            index++;
+        }
+        return union;
+    }
+}
