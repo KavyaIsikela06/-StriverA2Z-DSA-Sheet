@@ -1,0 +1,64 @@
+//returning indices:
+class Solution {
+    public int[] maxSubArrayIndices(int[] nums) {
+        int max = Integer.MIN_VALUE;
+        int sum = 0;
+
+        int start = 0;       // Final start index of max subarray
+        int end = 0;         // Final end index of max subarray
+        int tempStart = 0;   // Temp start for new subarray
+
+        for (int i = 0; i < nums.length; i++) {
+            sum += nums[i];
+
+            if (sum > max) {
+                max = sum;
+                start = tempStart;
+                end = i;
+            }
+
+            if (sum < 0) {
+                sum = 0;
+                tempStart = i + 1;
+            }
+        }
+
+        return new int[]{start, end};
+    }
+}
+//if array is required in output:
+class Solution {
+    public int[] maxSubArray(int[] nums) {
+        int max = Integer.MIN_VALUE;
+        int sum = 0;
+
+        int start = 0;
+        int end = 0;
+        int tempStart = 0;
+
+        for (int i = 0; i < nums.length; i++) {
+            sum += nums[i];
+
+            if (sum > max) {
+                max = sum;
+                start = tempStart;
+                end = i;
+            }
+
+            if (sum < 0) {
+                sum = 0;
+                tempStart = i + 1;
+            }
+        }
+
+        // Create the result subarray to return
+        int[] result = new int[end - start + 1];
+        for (int i = start; i <= end; i++) {
+            result[i - start] = nums[i];
+        }
+
+        return result;
+    }
+}
+Time:O(n)
+space:O(1)
