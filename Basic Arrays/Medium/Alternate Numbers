@@ -1,0 +1,32 @@
+import java.util.ArrayList;
+public class Solution{
+    public static int[] alternateNumbers(int[]arr){
+        ArrayList<Integer>positives=new ArrayList<>();
+        ArrayList<Integer>negatives=new ArrayList<>();
+        for(int num:arr){
+            if(num>0){positives.add(num);}
+            else{negatives.add(num);}
+        }
+        int minSize=Math.min(positives.size(),negatives.size());
+        for(int i=0;i<minSize;i++){
+            arr[2*i]=positives.get(i);
+            arr[2*i+1]=negatives.get(i);
+        }
+        int index=2*minSize;
+        if(positives.size()>negatives.size()){
+            for(int i=minSize;i<positives.size();i++){
+                arr[index]=positives.get(i);
+                index++;
+            }
+        }
+        else{
+            for(int i=minSize;i<negatives.size();i++){
+                arr[index]=negatives.get(i);
+                index++;
+            }
+        }
+        return arr;
+    }
+}
+Time:O(n)
+Space:O(n)
